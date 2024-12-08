@@ -18,13 +18,10 @@ Prerequisites
 -------------
 
 -   **Node.js**: Make sure Node.js is installed. You can verify by running:
-
-    bash
-
-    Copy code
-
-    `node -v
-    npm -v`
+```
+    node -v
+    npm -v
+```
 
     If not installed, you can download it from [Node.js official website](https://nodejs.org/) or use a package manager like `brew` (macOS) or `apt` (Linux).
 
@@ -42,67 +39,47 @@ Setup Instructions
 1.  **Create the Script**
 
     -   Open your terminal and create the script:
+```bash
+#!/bin/bash
 
-        bash
+# Check if the project name is provided
+if [ -z "$1" ]; then
+  echo "Usage: vite-react <project-name>"
+  exit 1
+fi
 
-        Copy code
+# Create the Vite React project (with the react template directly specified)
+npm create vite@latest $1 --template react --no-interactive
 
-        `nano ~/vite-react.sh`
+# Navigate into the project directory
+cd $1
 
-2.  **Add the Script Content** Copy and paste the following script:
+# Install dependencies
+npm install
 
-    bash
+# Start the development server in the background
+npm run dev &
 
-    Copy code
+# Open the project in VS Code
+code .
 
-    `#!/bin/bash
+```
 
-    # Check if the project name is provided
-    if [ -z "$1" ]; then
-      echo "Usage: vite-react <project-name>"
-      exit 1
-    fi
+    
+6.  **Make the Script Executable**
 
-    # Create the Vite React project (with the react template directly specified)
-    npm create vite@latest $1 --template react --no-interactive
 
-    # Navigate into the project directory
-    cd $1
+   ``` chmod +x ~/vite-react.sh```
 
-    # Install dependencies
-    npm install
+7.  **Move the Script to a Directory in PATH**
 
-    # Start the development server in the background
-    npm run dev &
+    ```sudo mv ~/vite-react.sh /usr/local/bin/vite-react```
 
-    # Open the project in VS Code
-    code .`
-
-3.  **Make the Script Executable**
-
-    bash
-
-    Copy code
-
-    `chmod +x ~/vite-react.sh`
-
-4.  **Move the Script to a Directory in PATH**
-
-    bash
-
-    Copy code
-
-    `sudo mv ~/vite-react.sh /usr/local/bin/vite-react`
-
-5.  **Ensure VS Code is Installed**
+8.  **Ensure VS Code is Installed**
 
     -   To install VS Code, you can use `brew`:
 
-        bash
-
-        Copy code
-
-        `brew install --cask visual-studio-code`
+        ```brew install --cask visual-studio-code```
 
 ### **Linux**
 
@@ -110,19 +87,11 @@ Setup Instructions
 
     -   Open your terminal and create the script:
 
-        bash
-
-        Copy code
-
-        `nano ~/vite-react.sh`
+        ```nano ~/vite-react.sh```
 
 2.  **Add the Script Content** Copy and paste the same script:
 
-    bash
-
-    Copy code
-
-    `#!/bin/bash
+    ```#!/bin/bash
 
     # Check if the project name is provided
     if [ -z "$1" ]; then
@@ -143,41 +112,25 @@ Setup Instructions
     npm run dev &
 
     # Open the project in VS Code
-    code .`
+    code .```
 
 3.  **Make the Script Executable**
 
-    bash
-
-    Copy code
-
-    `chmod +x ~/vite-react.sh`
+    ```chmod +x ~/vite-react.sh```
 
 4.  **Move the Script to a Directory in PATH**
+5.  
+    ```sudo mv ~/vite-react.sh /usr/local/bin/vite-react```
 
-    bash
-
-    Copy code
-
-    `sudo mv ~/vite-react.sh /usr/local/bin/vite-react`
-
-5.  **Ensure VS Code is Installed**
+6.  **Ensure VS Code is Installed**
 
     -   For Ubuntu/Debian:
 
-        bash
-
-        Copy code
-
-        `sudo apt install code`
+        ```sudo apt install code```
 
     -   For Fedora:
-
-        bash
-
-        Copy code
-
-        `sudo dnf install code`
+    -   
+        ```sudo dnf install code```
 
 * * * * *
 
@@ -186,19 +139,12 @@ Usage
 
 After following the setup steps, you can use the script to create a new Vite React app by running the following command:
 
-bash
 
-Copy code
-
-`vite-react <project-name>`
+```vite-react <project-name>```
 
 Replace `<project-name>` with the name of your new project. For example:
 
-bash
-
-Copy code
-
-`vite-react my-awesome-app`
+```vite-react my-awesome-app```
 
 This command will:
 
@@ -214,11 +160,7 @@ Troubleshooting
 
 -   If you encounter any issues with VS Code not opening, make sure the `code` command is available in your terminal. You can verify this by running:
 
-    bash
-
-    Copy code
-
-    `code --version`
+    ```code --version```
 
     If it's not available, follow the [installation instructions](https://code.visualstudio.com/docs/setup/setup-overview).
 
